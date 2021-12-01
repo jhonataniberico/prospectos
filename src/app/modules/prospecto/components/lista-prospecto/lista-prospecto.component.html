@@ -1,0 +1,50 @@
+<div class="m-listado">
+  <div class="m-title">
+    <h2>LISTADO DE PROSPECTOS</h2>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col" sortable="proyecto" (sort)="onSort($event)">PROYECTO</th>
+          <th scope="col" sortable="nombreProspecto" (sort)="onSort($event)">NOMBRE</th>
+          <th scope="col" sortable="apellidoProspecto" (sort)="onSort($event)">APELLIDO</th>
+          <th scope="col" sortable="tipoDocumento" (sort)="onSort($event)">TIP.DOC.</th>
+          <th scope="col" sortable="numeroDocumento" (sort)="onSort($event)" class="text-center">NUM.DOC.</th>
+          <th scope="col" sortable="distritoDetectado" (sort)="onSort($event)">DISTRITO DETECTADO</th>
+          <th scope="col" sortable="descaga" (sort)="onSort($event)" class="text-center">DESCARGA</th>
+          <th scope="col" sortable="carga" (sort)="onSort($event)" class="text-center">CARGA</th>
+          <th scope="col" sortable="tipoDispositivo" (sort)="onSort($event)">AURICULAR</th>
+          <th scope="col" sortable="apto" (sort)="onSort($event)">APTO</th>
+          <th scope="col" sortable="fecRegistro" (sort)="onSort($event)">F.REGISTRO</th>
+          <th scope="col" sortable="numPostulacion" (sort)="onSort($event)">CANT. POST</th>
+          <th scope="col" class="text-center">VER DETALLE</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let prospecto of prospectos">
+          <td>{{prospecto.proyecto}}</td>
+          <td>{{prospecto.nombreProspecto}}</td>
+          <td>{{prospecto.apellidoProspecto}}</td>
+          <td>{{prospecto.tipoDocumento}}</td>
+          <td class="text-center">{{prospecto.numeroDocumento}}</td>
+          <td>{{prospecto.distritoDetectado}}</td>
+          <td class="text-center">{{prospecto.descarga}}</td>
+          <td class="text-center">{{prospecto.carga}}</td>
+          <td>{{prospecto.tipoDispositivo}}</td>
+          <td class="text-center">{{ prospecto.apto === 1 ? 'Si' : 'No' }}</td>
+          <td>{{prospecto.fecRegistro | date: 'dd/MM/yyyy h:mm:ss a' }}</td>
+          <td class="text-center">{{prospecto.numPostulacion}}</td>
+          <td class="text-center">
+            <button type="button" class="m-button--icon" (click)="loadDetail(prospecto)"><img [src]="ICON_DETALLE" /></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="m-container">
+    <div class="m-actions text-right">
+      <button type="button" class="m-button" (click)="donwloadExcel()"><span>EXPORTAR</span><img [src]="ICON_ARROW_BUTTON" alt="icono-button-prospectos"></button>
+    </div>
+  </div>
+</div>

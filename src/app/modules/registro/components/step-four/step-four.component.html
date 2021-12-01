@@ -1,0 +1,34 @@
+<div class="m-home">
+    <div class="m-home__image">
+        <img src="assets/images/fondo/fondo-home4.png" />
+    </div>
+    <div class="m-home__content">
+        <div class="m-content__text">
+            <h3>EST&Aacute;S POSTULANDO AL PROYECTO:</h3>
+            <h4><strong>{{project.nombreProyecto}}</strong></h4>
+            <app-menu-step></app-menu-step>
+            <button type="button" class="m-button"><span>VER M&Aacute;S</span><img [src]="ICON_ARROW_BUTTON"
+                    alt="icono-button-prospectos"></button>
+        </div>
+    </div>
+</div>
+<ng-container>
+    <ng-container *ngIf="!finalizarActivate">
+        <app-informacion-pc></app-informacion-pc>
+        <div class="m-container">
+            <div class="m-actions text-right m-b-50">
+                <button *ngIf="!serviceRegLead" type="button" class="m-button" (click)="finalizarRegistro()">
+                    <span>FINALIZAR</span>
+                    <img [src]="ICON_ARROW_BUTTON" alt="icono-button-prospectos">
+                </button>
+                <div class="m-spinner" *ngIf="serviceRegLead"><mat-spinner></mat-spinner></div>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="finalizarActivate">
+        <app-informacion-envio-correo></app-informacion-envio-correo>
+    </ng-container>
+</ng-container>
+<div class="m-footer__login">
+    <p>&copy;2021 Agencia B12. Todos los derechos reservados.</p>
+</div>

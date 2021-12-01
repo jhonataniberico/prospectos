@@ -1,0 +1,104 @@
+<section class="m-section p-20" [formGroup]="infoPcForm">
+    <div class="m-container min-width">
+        <div class="m-title">
+            <h2>INFORMACI&Oacute;N DE EQUIPO</h2>
+        </div>
+        <div class="m-content">
+            <div class="m-grid--2">
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Procesador</mat-label>
+                        <mat-select formControlName="procesador" required>
+                            <mat-option>Procesador</mat-option>
+                            <mat-option *ngFor="let procesador of procesadores" [value]="procesador.tipoProcesador">
+                                {{procesador.tipoProcesador}}</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="procesador.errors && procesador.dirty">
+                            <control-messages [control]="procesador"></control-messages>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Memoria RAM</mat-label>
+                        <mat-select formControlName="memoriaRam" required>
+                            <mat-option>Memoria RAM</mat-option>
+                            <mat-option *ngFor="let ram of memoriasRam" [value]="ram.tamano">{{ram.tamano}}</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="memoriaRam.errors && memoriaRam.dirty">
+                            <control-messages [control]="memoriaRam"></control-messages>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Disco duro</mat-label>
+                        <mat-select formControlName="discoDuro" required>
+                            <mat-option>Disco duro</mat-option>
+                            <mat-option *ngFor="let disco of discos" [value]="disco.capacidad">{{disco.capacidad}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="discoDuro.errors && discoDuro.dirty">
+                            <control-messages [control]="discoDuro"></control-messages>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Sistema operativo</mat-label>
+                        <mat-select formControlName="sistOperativo" required>
+                            <mat-option>Sistema operativo</mat-option>
+                            <mat-option *ngFor="let sistema of sistemas" [value]="sistema.ssoo">{{sistema.ssoo}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="sistOperativo.errors && sistOperativo.dirty">
+                            <control-messages [control]="sistOperativo"></control-messages>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="m-pasos__pc">
+                <div class="m-title__pc">
+                    <p>Por favor realizar los siguientes pasos</p>
+                </div>
+                <div class="m-datos__pc">
+                    <div class="m-pasos__item">
+                        <span>01</span>
+                        <p>Pulsa la tecla de Windows y escribe dxdiag en el cuadro de b&uacute;squeda.</p>
+                    </div>
+                    <div class="m-pasos__item">
+                        <span>02</span>
+                        <p>Haz clic en <br> dxdiag.exe</p>
+                    </div>
+                    <div class="m-pasos__item">
+                        <span>03</span>
+                        <p>Cuando la barra de progreso desaparezca, captura pantalla de la informaci&oacute;n.</p>
+                    </div>
+                    <div class="m-pasos__item">
+                        <span>04</span>
+                        <p>Guarda la imagen en formato jpg desde un aplicativo de edici&oacute;n de im&aacute;genes (Paint).</p>
+                    </div>
+                    <div class="m-pasos__item">
+                        <span>05</span>
+                        <p>Adjunta la captura como imagen</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="m-input--flex">
+            <p>Datos de PC:</p>
+            <div class="m-input--adjuntar" (click)="adjuntarImagen()">
+                <mat-form-field appearance="outline" class="m-disabled">
+                    <mat-label>Adjuntar imagen</mat-label>
+                    <input matInput type="text" placeholder="" #inputText formControlName="imagen" />
+                    <mat-error *ngIf="imagen.errors && imagen.dirty">
+                        <control-messages [control]="imagen"></control-messages>
+                      </mat-error>
+                </mat-form-field>
+                
+            </div>
+            <img src="assets/images/iconos/icon-upload.svg" (click)="adjuntarImagen()" />
+        </div>
+    </div>
+</section>
+<input type="file" #fileTxt style="display:none" (change)="fileChangeEvent($event)" />

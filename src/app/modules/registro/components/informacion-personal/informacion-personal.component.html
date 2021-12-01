@@ -1,0 +1,159 @@
+<section class="m-section p-20">
+    <div class="m-container min-width">
+        <div class="m-title">
+            <h2>INFORMACI&Oacute;N PERSONAL</h2>
+        </div>
+        <div class="m-content">
+            <div class="m-grid--2" [formGroup]="infoPersForm">
+                <div class="m-textfield__input">
+                    <mat-form-field  appearance="outline">
+                        <mat-label>Nombres</mat-label>
+                        <input type="text" onLetter matInput placeholder="" formControlName="nombresPostulante"
+                            autocomplete="off" required>
+                        <mat-error *ngIf="nombresPostulante.errors && nombresPostulante.dirty">
+                            <ng-container *ngIf="nombresPostulante.errors.required; else elseif1">Campo obligatorio.</ng-container>
+                            <ng-template #elseif1>
+                                <ng-container *ngIf="nombresPostulante.errors.minlength; else elseif2">M&iacute;nimo
+                                    {{nombresPostulante.errors.minlength.requiredLength}} caracteres</ng-container>
+                            </ng-template>
+                            <ng-template #elseif2>
+                                <ng-container *ngIf="nombresPostulante.errors.maxlength; else elseif3">M&aacute;ximo
+                                    {{nombresPostulante.errors.maxlength.requiredLength}} caracteres</ng-container>
+                            </ng-template>
+                            <ng-template #elseif3>
+                                <ng-container *ngIf="nombresPostulante.errors.pattern; else elseif4">Caracteres
+                                    inv&aacute;lidos</ng-container>
+                            </ng-template>
+                            <ng-template #elseif4>
+                                <ng-container *ngIf="nombresPostulante.errors.exception; else elseif4">
+                                    {{nombresPostulante.errors.exception.msj}}</ng-container>
+                            </ng-template>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="m-textfield__input">
+                    <mat-form-field  appearance="outline">
+                        <mat-label>Apellidos</mat-label>
+                        <input type="text" onLetter matInput placeholder="" formControlName="apellidosPostulante"
+                            autocomplete="off" required>
+                        <mat-error *ngIf="apellidosPostulante.errors && apellidosPostulante.dirty">
+                            <ng-container *ngIf="apellidosPostulante.errors.required; else elseif1">Campo obligatorio.</ng-container>
+                            <ng-template #elseif1>
+                                <ng-container *ngIf="apellidosPostulante.errors.minlength; else elseif2">M&iacute;nimo
+                                    {{apellidosPostulante.errors.minlength.requiredLength}} caracteres</ng-container>
+                            </ng-template>
+                            <ng-template #elseif2>
+                                <ng-container *ngIf="apellidosPostulante.errors.maxlength; else elseif3">M&aacute;ximo
+                                    {{apellidosPostulante.errors.maxlength.requiredLength}} caracteres</ng-container>
+                            </ng-template>
+                            <ng-template #elseif3>
+                                <ng-container *ngIf="apellidosPostulante.errors.pattern; else elseif4">Caracteres
+                                    inv&aacute;lidos</ng-container>
+                            </ng-template>
+                            <ng-template #elseif4>
+                                <ng-container *ngIf="apellidosPostulante.errors.exception; else elseif4">
+                                    {{apellidosPostulante.errors.exception.msj}}</ng-container>
+                            </ng-template>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="m-textfield__input">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Tipo de documento</mat-label>
+                        <mat-select formControlName="tipoDocumento" required>
+                            <mat-option>Tipo de documento</mat-option>
+                            <mat-option *ngFor="let tipoDoc of tiposDocumentos" [value]="tipoDoc.value">{{tipoDoc.desc}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="tipoDocumento.errors && tipoDocumento.dirty">
+                            <ng-container *ngIf="tipoDocumento.errors.required; else elseif1">Seleccione el tipo doc.
+                            </ng-container>
+                            <ng-template #elseif1>
+                                <ng-container *ngIf="tipoDocumento.errors.exception;">
+                                    {{tipoDocumento.errors.exception.msj}}
+                                </ng-container>
+                            </ng-template>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="m-textfield__input">
+                    <mat-form-field  appearance="outline">
+                        <mat-label>N&uacute;mero de documento</mat-label>
+                        <input type="text" onNumber matInput placeholder="" formControlName="numeroDocumento" autocomplete="o"
+                            maxlength="18" required>
+                        <mat-error *ngIf="numeroDocumento.errors && numeroDocumento.dirty">
+                            <ng-container *ngIf="numeroDocumento.errors.required; else elseif1">Campo obligatorio.</ng-container>
+                            <ng-template #elseif1>
+                                <ng-container *ngIf="numeroDocumento.errors.minlength; else elseif2">M&iacute;nimo
+                                    {{numeroDocumento.errors.minlength.requiredLength}} dígitos</ng-container>
+                            </ng-template>
+                            <ng-template #elseif2>
+                                <ng-container *ngIf="numeroDocumento.errors.maxlength; else elseif3">M&aacute;ximo
+                                    {{numeroDocumento.errors.maxlength.requiredLength}} dígitos</ng-container>
+                            </ng-template>
+                            <ng-template #elseif3>
+                                <ng-container *ngIf="numeroDocumento.errors.pattern; else elseif4">nro. documento
+                                    invalido
+                                </ng-container>
+                            </ng-template>
+                            <ng-template #elseif4>
+                                <ng-container *ngIf="numeroDocumento.errors.exception;">
+                                    {{numeroDocumento.errors.exception.msj}}</ng-container>
+                            </ng-template>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="m-input m-0">
+                    <label class="m-label">Fecha de nacimiento:</label>
+                    <div class="input-group">
+                        <input class="form-control" placeholder="dd/mm/yyyy" name="dp" formControlName="fecNacimiento"
+                            ngbDatepicker #d="ngbDatepicker" [minDate]="minDate" [maxDate]="maxDate">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary calendar" (click)="d.toggle()"
+                                type="button"></button>
+                        </div>
+                    </div>
+                    <span *ngIf="fecNacimiento.errors && fecNacimiento.dirty">
+                        <div class="m-invalid" *ngIf="fecNacimiento.errors.required; else elseif1;">
+                            Campo obligatorio.
+                        </div>
+                        <ng-template #elseif1>
+                            <div class="m-invalid" *ngIf="fecNacimiento.errors.exception; else elseif2;">
+                                {{fecNacimiento.errors.exception.msj}}
+                            </div>
+                        </ng-template>
+                        <ng-template #elseif2>
+                            <div class="m-invalid" *ngIf="fecNacimiento.errors.ngbDate.maxDate; else elseif3;">
+                                Fecha máxima hasta
+                                {{fecNacimiento.errors.ngbDate.maxDate.maxDate.day}}/{{fecNacimiento.errors.ngbDate.maxDate.maxDate.month}}/{{fecNacimiento.errors.ngbDate.maxDate.maxDate.year}}
+                            </div>
+                        </ng-template>
+                        <ng-template #elseif3>
+                            <div class="m-invalid" *ngIf="fecNacimiento.errors.ngbDate.maxDate; else elseif4;">
+                                Fecha máxima hasta
+                                {{fecNacimiento.errors.ngbDate.maxDate.maxDate.day}}/{{fecNacimiento.errors.ngbDate.maxDate.maxDate.month}}/{{fecNacimiento.errors.ngbDate.maxDate.maxDate.year}}
+                            </div>
+                        </ng-template>
+                        <ng-template #elseif4>
+                            <div class="m-invalid" *ngIf="fecNacimiento.errors.ngbDate.minDate; else elseif5;">
+                                Fecha máxima hasta
+                                {{fecNacimiento.errors.ngbDate.minDate.minDate.day}}/{{fecNacimiento.errors.ngbDate.minDate.minDate.month}}/{{fecNacimiento.errors.ngbDate.minDate.minDate.year}}
+                            </div>
+                        </ng-template>
+                        <ng-template #elseif5>
+                            <div class="m-invalid" *ngIf="fecNacimiento.errors.ngbDate.invalid;">
+                                Fecha inválida
+                            </div>
+                        </ng-template>
+                    </span>
+                </div>
+                <div class="m-input m-0">
+                    <label class="m-label m-b-25">Sexo:</label>
+                    <mat-radio-group formControlName="sexo">
+                        <mat-radio-button  *ngFor="let s of sexos"[value]="s.value">{{s.desc}}</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

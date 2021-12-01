@@ -1,0 +1,227 @@
+<section class="m-section">
+  <div class="m-spinner" *ngIf="loadSpinner"><mat-spinner></mat-spinner></div>
+  <div class="m-container max-width bg-blue">
+      <app-logout></app-logout>
+      <div class="m-detalle">
+        <div class="m-card__login detalle">
+          <div class="m-card__title">
+              <span>INTRANET</span>
+              <h2>REGISTRO DE PROSPECTOS</h2>
+          </div>
+        </div>
+        <div class="m-detalle__title">
+          <div class="m-text__title">
+            <h2>Proyecto:</h2>
+            <h2>{{ prospecto.proyecto }}</h2>
+          </div>
+          <div class="m-text__title">
+            <h2>Fecha de registro:</h2>
+            <p>{{ prospecto.fechaRegistro | date: 'dd/MM/yyyy'}}</p>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="m-container min-width p-20">
+    <div class="m-title m-title--flex">
+      <h2>INFORMACI&Oacute;N PERSONAL</h2>
+      <h3>CANT. DE POSTULACIONES: {{ prospecto.cantPostulaciones }}</h3>
+    </div>
+    <div class="m-content">
+        <div class="m-grid--2">
+            <div class="m-textfield__input m-disabled">
+                <mat-form-field  appearance="outline">
+                    <mat-label>Nombres</mat-label>
+                    <input type="text" matInput autocomplete="none" [value]="prospecto.nombrePostulante || ''" disabled />
+                </mat-form-field>
+            </div>
+            <div class="m-textfield__input m-disabled">
+                <mat-form-field  appearance="outline">
+                    <mat-label>Apellidos</mat-label>
+                    <input type="text" matInput autocomplete="none" [value]="prospecto.apellidoPostulante || ''" disabled />
+                </mat-form-field>
+            </div>
+            <div class="m-textfield__input m-disabled">
+              <div class="m-textfield__input">
+                <mat-form-field appearance="outline">
+                    <mat-label>Tipo de documento</mat-label>
+                    <input type="text" matInput [value]="prospecto.tipoDocumento || ''" disabled>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="m-textfield__input m-disabled">
+                <mat-form-field  appearance="outline">
+                    <mat-label>N&uacute;mero de documento</mat-label>
+                    <input type="text" matInput autocomplete="none" [value]="prospecto.numeroDocumento || ''" disabled />
+                </mat-form-field>
+            </div>
+            <div class="m-textfield__input m-disabled">
+              <mat-form-field appearance="outline">
+                  <mat-label>Fecha de nacimiento</mat-label>
+                  <input type="text" matInput [value]="(prospecto.fecNacimiento || '') | date: 'dd/MM/yyyy'" disabled>
+              </mat-form-field>
+            </div>
+            <div class="m-input m-0">
+                <label class="m-label">Sexo:</label>
+                <mat-radio-group [value]="prospecto.sexo" disabled>
+                  <mat-radio-button  *ngFor="let s of sexos"[value]="s.value">{{s.desc}}</mat-radio-button>
+                </mat-radio-group>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="m-container min-width p-20">
+    <div class="m-title">
+      <h2>INFORMACI&Oacute;N DE CONTACTO</h2>
+    </div>
+    <div class="m-content">
+        <div class="m-grid--2">
+            <div class="m-textfield__input m-disabled">
+                <mat-form-field appearance="outline">
+                    <mat-label>Tel&eacute;fono</mat-label>
+                    <input onNumber type="text" matInput maxlength="12" [value]="prospecto.telefono || ''" disabled/>
+                </mat-form-field>
+            </div>
+            <div class="m-textfield__input m-disabled">
+                <mat-form-field appearance="outline">
+                    <mat-label>Correo electr&oacute;nico</mat-label>
+                    <input type="text" matInput maxlength="75" [value]="prospecto.correo || ''" disabled/>
+                </mat-form-field>
+            </div>
+            <div class="m-textfield__input m-disabled">
+              <mat-form-field appearance="outline">
+                  <mat-label>Pa&iacute;s</mat-label>
+                  <input type="text" matInput [value]="prospecto.pais || ''" disabled/>
+              </mat-form-field>
+            </div>
+            <div class="m-textfield__input m-disabled">
+              <mat-form-field appearance="outline">
+                  <mat-label>Departamento</mat-label>
+                  <input type="text" matInput [value]="prospecto.departamento || ''" disabled/>
+              </mat-form-field>
+            </div>
+            <div class="m-textfield__input">
+              <mat-form-field appearance="outline">
+                  <mat-label>Provincia</mat-label>
+                  <input type="text" matInput [value]="prospecto.provincia || ''" disabled />
+              </mat-form-field>
+            </div>
+            <div class="m-textfield__input m-disabled">
+              <mat-form-field appearance="outline">
+                  <mat-label>Distrito</mat-label>
+                  <input type="text" matInput [value]="prospecto.distrito || ''" disabled />
+              </mat-form-field>
+            </div>
+            <div class="m-textfield__input m-disabled">
+              <mat-form-field appearance="outline">
+                  <mat-label>Distrito detectado</mat-label>
+                  <input type="text" matInput [value]="prospecto.distritoDetectado || ''" disabled />
+              </mat-form-field>
+            </div>
+            <div class="m-textfield__input m-disabled m-column--2">
+                <mat-form-field appearance="outline">
+                    <mat-label>Dirección</mat-label>
+                    <input type="text" matInput [value]="prospecto.direccion || ''" disabled />
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="m-container min-width p-20">
+    <div class="m-title">
+      <h2>CONECTIVIDAD</h2>
+    </div>
+    <div class="m-content">
+      <div class="m-grid--2">
+        <div class="m-textfield__input m-disabled">
+            <mat-form-field appearance="outline">
+                <mat-label>Operador</mat-label>
+                <input type="text" matInput [value]="prospecto.operador || ''" disabled>
+            </mat-form-field>
+        </div>
+        <div class="m-textfield__input m-disabled">
+          <mat-form-field appearance="outline">
+              <mat-label>Velocidad de descarga</mat-label>
+              <input type="text" matInput [value]="prospecto.descarga || ''" disabled>
+          </mat-form-field>
+        </div>
+        <div class="m-textfield__input m-disabled">
+          <mat-form-field appearance="outline">
+              <mat-label>Velocidad de carga</mat-label>
+              <input type="text" matInput [value]="prospecto.carga || ''" disabled>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="m-container min-width p-20">
+    <div class="m-title">
+      <h2>DISPOSITIVOS</h2>
+    </div>
+    <div class="m-content">
+      <div class="m-grid--2">
+        <div class="m-textfield__input m-disabled">
+          <mat-form-field appearance="outline">
+              <mat-label>Tipo de auricular</mat-label>
+              <input type="text" matInput [value]="prospecto.tipoDispositivo || ''" disabled>
+          </mat-form-field>
+        </div>
+        <div class="m-button--image">
+          <button type="button" class="m-button m-button--transparent" (click)="openModal(prospecto.dispositivo)">Ver foto</button>
+          <img src="assets/images/iconos/icon-image.svg" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="m-container min-width p-20">
+    <div class="m-title">
+      <h2>EQUIPOS</h2>
+    </div>
+    <div class="m-content">
+      <div class="m-grid--2">
+        <div class="m-textfield__input m-disabled">
+          <mat-form-field appearance="outline">
+              <mat-label>Procesador</mat-label>
+              <input type="text" matInput [value]="prospecto.procesador || ''" disabled>
+          </mat-form-field>
+        </div>
+        <div class="m-textfield__input m-disabled">
+          <mat-form-field appearance="outline">
+              <mat-label>Memoria RAM</mat-label>
+              <input type="text" matInput [value]="prospecto.memoriaRam || ''" disabled>
+          </mat-form-field>
+        </div>
+        <div class="m-textfield__input m-disabled">
+          <mat-form-field appearance="outline">
+              <mat-label>Disco duro</mat-label>
+              <input type="text" matInput [value]="prospecto.discoDuro || ''" disabled>
+          </mat-form-field>
+        </div>
+        <div class="m-textfield__input m-disabled">
+          <mat-form-field appearance="outline">
+              <mat-label>Sistema Operativo</mat-label>
+              <input type="text" matInput [value]="prospecto.sistOperativo || ''" disabled>
+          </mat-form-field>
+        </div>
+        <div class="m-textfield__input m-disabled">
+          <mat-form-field appearance="outline">
+              <mat-label>Apto</mat-label>
+              <input type="text" matInput [value]="prospecto.apto === 1 ? 'Si' : 'No' || ''" disabled>
+          </mat-form-field>
+        </div>
+        <div class="m-button--image">
+          <button type="button" class="m-button m-button--transparent" (click)="openModal(prospecto.equipo)">Ver foto</button>
+          <img src="assets/images/iconos/icon-image.svg" />
+        </div>
+      </div>
+    </div>
+    <div class="m-actions text-right">
+      <button type="button" class="m-button" (click)="regresarListaProspectos()">
+        <span>REGRESAR</span>
+        <img src="assets/images/iconos/icon-arrow-button.svg" alt="icono-button-prospectos">
+      </button>
+    </div>
+  </div>
+  <div class="m-footer__login">
+      <p>&copy;2021 Agencia B12. Todos los derechos reservados.</p>
+  </div>
+</section>

@@ -1,0 +1,45 @@
+@font-face {
+	font-family: 'Futura-Light';
+	src: url('../fonts/Futura/Futura-Light.ttf');
+	font-weight: 100;
+}
+@font-face {
+	font-family: 'Futura-Medium';
+	src: url('../fonts/Futura/Futura-Bold.ttf');
+	font-weight: 100;
+}
+@font-face {
+	font-family: 'Futura-Bold';
+	src: url('../fonts/Futura/Futura-Bold.ttf');
+	font-weight: 100;
+}
+@font-face {
+	font-family: 'Futura-ExtraBlack';
+	src: url('../fonts/Futura/Futura-ExtraBlack.ttf');
+	font-weight: 100;
+}
+@font-face {
+	font-family: 'Rubik-Light';
+	src: url('../fonts/Rubik/Rubik-Light.ttf');
+	font-weight: 100;
+}
+@font-face {
+	font-family: 'Rubik-Regular';
+	src: url('../fonts/Rubik/Rubik-Regular.ttf');
+	font-weight: 100;
+}
+@font-face {
+	font-family: 'Rubik-Medium';
+	src: url('../fonts/Rubik/Rubik-Medium.ttf');
+	font-weight: 100;
+}
+@font-face {
+	font-family: 'Rubik-Bold';
+	src: url('../fonts/Rubik/Rubik-Bold.ttf');
+	font-weight: 100;
+}
+@font-face {
+	font-family: 'Futura-ExtraBold';
+	src: url('../fonts/Rubik/Rubik-ExtraBold.ttf');
+	font-weight: 100;
+}

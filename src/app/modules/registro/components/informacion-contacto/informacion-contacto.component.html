@@ -1,0 +1,99 @@
+<section class="m-section p-20">
+    <div class="m-container min-width">
+        <div class="m-title">
+            <h2>INFORMACI&Oacute;N DE CONTACTO</h2>
+        </div>
+        <div class="m-content">
+            <div class="m-grid--2" [formGroup]="infoContactoForm">
+                <div class="m-textfield__input">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Tel&eacute;fono</mat-label>
+                        <input onNumber type="text" matInput placeholder="" formControlName="telefono" maxlength="12" autocomplete="off" required>
+                        <mat-error *ngIf="telefono.errors && telefono.dirty">
+                            <control-messages [control]="telefono"></control-messages>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="m-textfield__input">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Correo electr&oacute;nico</mat-label>
+                        <input type="text" matInput placeholder="" formControlName="correo" maxlength="75" autocomplete="off" required />
+                        <mat-error *ngIf="correo.errors && correo.dirty">
+                            <control-messages [control]="correo"></control-messages>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="m-textfield__input">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Pa&iacute;s</mat-label>
+                        <mat-select formControlName="pais" required (selectionChange)="selectedPais()">
+                            <mat-option>Pa&iacute;s</mat-option>
+                            <mat-option *ngFor="let p of paises;" [value]="p.nombrePais">{{p.nombrePais}}</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="pais.errors && pais.dirty">
+                            <control-messages [control]="pais"></control-messages>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="m-textfield__input">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Departamento</mat-label>
+                        <mat-select formControlName="departamento" required (selectionChange)="selectedDepartamento()">
+                            <mat-option>Departamento</mat-option>
+                            <mat-option *ngFor="let d of departamentos;" [value]="d.nombreDepartamento">
+                                {{d.nombreDepartamento}}</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="departamento.errors && departamento.dirty">
+                            <control-messages [control]="departamento"></control-messages>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="m-textfield__input">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Provincia</mat-label>
+                        <mat-select formControlName="provincia" required (selectionChange)="selectedProvincia()">
+                            <mat-option>Provincia</mat-option>
+                            <mat-option *ngFor="let p of provincias;" [value]="p.nombreProvincia">{{p.nombreProvincia}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="provincia.errors && provincia.dirty">
+                            <control-messages [control]="provincia"></control-messages>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="m-textfield__input">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Distrito</mat-label>
+                        <mat-select formControlName="distrito" required>
+                            <mat-option>Distrito</mat-option>
+                            <mat-option *ngFor="let d of distritos;" [value]="d.nombreDistrito">{{d.nombreDistrito}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="distrito.errors && distrito.dirty">
+                            <control-messages [control]="distrito"></control-messages>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <!-- <div class="m-textfield__input m-column--2">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Dirección</mat-label>
+                        <input type="text" matInput placeholder="" formControlName="direccion" autocomplete="off" required>
+                        <button class="m-button m-button--default" (click)="direccion.enabled ? pintarMapa() : activarInputDisabled()"><span>{{direccion.enabled ? 'Buscar' : 'Cambiar'}}</span></button>
+                        <mat-error *ngIf="direccion.errors && direccion.dirty">
+                            <control-messages [control]="direccion"></control-messages>
+                        </mat-error>
+                    </mat-form-field>
+                </div> -->
+                <div class="m-textfield__input m-column--2">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Dirección</mat-label>
+                        <input type="text" matInput placeholder="" formControlName="direccion" autocomplete="off" required>
+                        <mat-error *ngIf="direccion.errors && direccion.dirty">
+                            <control-messages [control]="direccion"></control-messages>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

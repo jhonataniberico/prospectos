@@ -1,0 +1,12 @@
+<div class="btn-group mr-2 m-steps" role="group" aria-label="First group">
+  <a class="btn" routerLinkActive="active" [routerLink]="['/'+PASOS.PASO_1]" [queryParams]="params">01</a>
+
+  <a class="btn" routerLinkActive="active" [routerLink]="'/'+PASOS.PASO_2" *ngIf="validStep1" [queryParams]="params">02</a>
+  <a class="btn" *ngIf="!validStep1"  (click)="touchedInput(PASOS.PASO_1)">02</a>
+
+  <a class="btn" routerLinkActive="active" [routerLink]="'/'+PASOS.PASO_3" *ngIf="validStep2" [queryParams]="params">03</a>
+  <a class="btn" *ngIf="!validStep2" (click)="touchedInput(PASOS.PASO_2)">03</a>
+
+  <a class="btn" routerLinkActive="active" [routerLink]="'/'+PASOS.PASO_4" *ngIf="validStep3" [queryParams]="params">04</a>
+  <a class="btn" *ngIf="!validStep3" (click)="touchedInput(PASOS.PASO_3)">04</a>
+</div>

@@ -1,0 +1,39 @@
+<section class="m-section p-20">
+  <div class="m-container min-width" [formGroup]="infoAudioForm">
+    <div class="m-title">
+      <h2>DISPOSITIVOS</h2>
+    </div>
+    <div class="m-dispositivos">
+      <div class="m-select m-0">
+        <mat-form-field appearance="outline">
+          <mat-label>Tipo de auricular</mat-label>
+          <mat-select required formControlName="tipoDispositivo">
+            <mat-option>Tipo de auricular</mat-option>
+            <mat-option *ngFor="let auricular of auriculares" [value]="auricular.tipoAuricular">
+              {{auricular.tipoAuricular}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="tipoDispositivo.errors && tipoDispositivo.dirty">
+            <control-messages [control]="tipoDispositivo"></control-messages>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="m-dispositivos__image">
+        <img [src]="urlImg" />
+      </div>
+      <div class="m-input--flex">
+        <div class="m-input--adjuntar" (click)="adjuntarImagen()">
+          <mat-form-field appearance="outline" class="m-disabled">
+            <mat-label>Adjuntar imagen de aud&iacute;fonos</mat-label>
+            <input matInput type="text" placeholder="" #inputText formControlName="nameFile" />
+            <mat-error *ngIf="nameFile.errors && nameFile.dirty">
+              <control-messages [control]="nameFile"></control-messages>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <img src="assets/images/iconos/icon-upload.svg" (click)="adjuntarImagen()" />
+      </div>
+    </div>
+  </div>
+</section>
+<input type="file" #fileTxt style="display:none" (change)="fileChangeEvent($event)" />

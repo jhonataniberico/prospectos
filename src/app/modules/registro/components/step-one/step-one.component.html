@@ -1,0 +1,31 @@
+<div class="m-home">
+    <div class="m-home__image">
+        <img src="assets/images/fondo/fondo-home1.png" />
+    </div>
+    <div class="m-home__content">
+        <div class="m-content__text">
+            <h2>REGISTRO DE PROSPECTOS</h2>
+            <h3>EST&Aacute;S POSTULANDO AL PROYECTO:</h3>
+            <h4><strong>{{project.nombreProyecto}}</strong></h4>
+            <p>{{project.descProyecto}}</p>
+            <app-menu-step></app-menu-step>
+            <button type="button" class="m-button"><span>VER M&Aacute;S</span><img [src]="ICON_ARROW_BUTTON"
+                    alt="icono-button-prospectos"></button>
+        </div>
+    </div>
+</div>
+<app-informacion-personal></app-informacion-personal>
+<app-informacion-contacto></app-informacion-contacto>
+<!-- <app-informacion-mapa></app-informacion-mapa> -->
+<div class="m-container m-t-16">
+    <div class="m-actions text-right m-b-50">
+        <button *ngIf="!serviceRegister" type="button" class="m-button" (click)="redirectNextStep(2)">
+            <span>PASO 2</span>
+            <img [src]="ICON_ARROW_BUTTON" alt="icono-button-prospectos">
+        </button>
+        <div class="m-spinner" *ngIf="serviceRegister"><mat-spinner></mat-spinner></div>
+    </div>
+</div>
+<div class="m-footer__login">
+    <p>&copy;2021 Agencia B12. Todos los derechos reservados.</p>
+</div>

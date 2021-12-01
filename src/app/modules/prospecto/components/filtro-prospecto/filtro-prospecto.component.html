@@ -1,0 +1,164 @@
+<div class="m-filtro" [formGroup]=formSearch>
+    <div class="m-title">
+        <h2>FILTRO DE B&Uacute;SQUEDA</h2>
+    </div>
+    <div class="m-content">
+        <div class="m-grid--3">
+            <div class="m-textfield__input">
+                <mat-form-field appearance="outline">
+                    <mat-label>Tipo de documento</mat-label>
+                    <mat-select formControlName="tipoDocumento">
+                        <mat-option>Tipo de documento</mat-option>
+                        <mat-option *ngFor="let t of tiposDocumentos" [value]="t.value">{{t.desc}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="m-textfield__input">
+                <mat-form-field appearance="outline">
+                    <mat-label>N&uacute;mero de documento</mat-label>
+                    <input type="text" onNumber matInput placeholder="" formControlName="numeroDocumento">
+                </mat-form-field>
+            </div>
+            <div class="m-textfield__input">
+                <mat-form-field appearance="outline">
+                    <mat-label>Velocidad de descarga</mat-label>
+                    <mat-select formControlName="descarga">
+                        <mat-option>Velocidad de descarga</mat-option>
+                        <mat-option *ngFor="let v of vDescargas" [value]="v.id">{{v.descripcion}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="m-textfield__input">
+                <mat-form-field appearance="outline">
+                    <mat-label>Velocidad de carga</mat-label>
+                    <mat-select formControlName="carga">
+                        <mat-option>Velocidad de carga</mat-option>
+                        <mat-option *ngFor="let v of vCargas" [value]="v.id">{{v.descripcion}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="m-textfield__input">
+                <mat-form-field appearance="outline">
+                    <mat-label>Tipo de auriculares</mat-label>
+                    <mat-select formControlName="auricular">
+                        <mat-option>Tipo de auriculares</mat-option>
+                        <mat-option *ngFor="let auricular of auriculares" [value]="auricular.idAuricular">
+                            {{auricular.tipoAuricular}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="m-textfield__input">
+                <mat-form-field appearance="outline">
+                    <mat-label>Proyecto</mat-label>
+                    <mat-select formControlName="idProyecto">
+                        <mat-option>Proyecto</mat-option>
+                        <mat-option *ngFor="let proyecto of proyectos" [value]="proyecto.idProyecto">{{proyecto.nombreProyecto}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="m-textfield__input">
+                <mat-form-field appearance="outline">
+                    <mat-label>Pa&iacute;s</mat-label>
+                    <mat-select formControlName="pais" (selectionChange)="selectedPais()">
+                        <mat-option>Pa&iacute;s</mat-option>
+                        <mat-option *ngFor="let p of paises;" [value]="p.idPais">{{p.nombrePais}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="pais.errors && pais.dirty">
+                        <control-messages [control]="pais"></control-messages>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="m-textfield__input">
+                <mat-form-field appearance="outline">
+                    <mat-label>Departamento</mat-label>
+                    <mat-select formControlName="departamento" (selectionChange)="selectedDepartamento()">
+                        <mat-option>Departamento</mat-option>
+                        <mat-option *ngFor="let d of departamentos;" [value]="d.idDepartamento">
+                            {{d.nombreDepartamento}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="departamento.errors && departamento.dirty">
+                        <control-messages [control]="departamento"></control-messages>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="m-textfield__input">
+                <mat-form-field appearance="outline">
+                    <mat-label>Provincia</mat-label>
+                    <mat-select formControlName="provincia" (selectionChange)="selectedProvincia()">
+                        <mat-option>Provincia</mat-option>
+                        <mat-option *ngFor="let p of provincias;" [value]="p.idProvincia">{{p.nombreProvincia}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="provincia.errors && provincia.dirty">
+                        <control-messages [control]="provincia"></control-messages>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="m-textfield__input">
+                <mat-form-field appearance="outline">
+                    <mat-label>Distrito</mat-label>
+                    <mat-select formControlName="distrito">
+                        <mat-option>Distrito</mat-option>
+                        <mat-option *ngFor="let d of distritos;" [value]="d.idDistrito">{{d.nombreDistrito}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="distrito.errors && distrito.dirty">
+                        <control-messages [control]="distrito"></control-messages>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="m-textfield__input">
+                <mat-form-field appearance="outline">
+                    <mat-label>Distrito Detectado</mat-label>
+                    <mat-select formControlName="distritoDetectado">
+                        <mat-option>Distrito Detectado</mat-option>
+                        <mat-option *ngFor="let d of distritosDetectados;" [value]="d.distritoDetectado">{{d.distritoDetectado}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="distritoDetectado.errors && distritoDetectado.dirty">
+                        <control-messages [control]="distritoDetectado"></control-messages>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="m-textfield__input">
+                <mat-form-field appearance="outline">
+                    <mat-label>Tipo de aptitud</mat-label>
+                    <mat-select formControlName="apto">
+                        <mat-option>Tipo de aptitud</mat-option>
+                        <mat-option *ngFor="let t of tiposAptitudes" [value]="t.value">{{t.desc}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="m-textfield__input">
+                <div class="m-input m-0">
+                    <div class="input-group">
+                        <input class="form-control" placeholder="Fecha Inicio" name="dateInit" ngbDatepicker
+                            formControlName="fecIniRegistro" #dateInit="ngbDatepicker">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary calendar" (click)="dateInit.toggle()" type="button"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="m-textfield__input">
+                <div class="m-input m-0">
+                    <div class="input-group">
+                        <input class="form-control" placeholder="Fecha Fin" name="dateEnd" ngbDatepicker
+                            formControlName="fecFinRegistro" #dateEnd="ngbDatepicker">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary calendar" (click)="dateEnd.toggle()"
+                                type="button"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="m-actions text-right">
+        <button type="button" class="m-button" (click)="filtrarLista()">
+            <span>BUSCAR</span>
+            <img [src]="ICON_ARROW_BUTTON" alt="icono-button-prospectos">
+        </button>
+    </div>
+</div>
